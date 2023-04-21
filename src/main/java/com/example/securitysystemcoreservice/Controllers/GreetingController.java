@@ -13,7 +13,7 @@ public class GreetingController {
     private final AtomicLong counter = new AtomicLong();
 
     @GetMapping("/greeting")
-    public com.example.securitysystemcoreservice.models.Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-        return new com.example.securitysystemcoreservice.models.Greeting(counter.incrementAndGet(), String.format(template, name));
+    public com.example.securitysystemcoreservice.Models.Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+        return new com.example.securitysystemcoreservice.Models.Greeting(counter.incrementAndGet(), String.format(template, name));
     }
 }
