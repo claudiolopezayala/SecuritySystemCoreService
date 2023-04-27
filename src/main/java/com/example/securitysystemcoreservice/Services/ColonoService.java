@@ -12,11 +12,11 @@ import com.example.securitysystemcoreservice.Services.exceptions.ColonoException
 import java.util.Optional;
 
 @Service
-public class ColonosService {
+public class ColonoService {
     private final ColonoRepository colonoRepository;
 
     @Autowired
-    public ColonosService(ColonoRepository colonoRepository) {
+    public ColonoService(ColonoRepository colonoRepository) {
         this.colonoRepository = colonoRepository;
     }
 
@@ -63,6 +63,7 @@ public class ColonosService {
     }
 
     private boolean doesColonoExist(Long id) {
+
         return this.colonoRepository.findById(id).isPresent();
     }
     

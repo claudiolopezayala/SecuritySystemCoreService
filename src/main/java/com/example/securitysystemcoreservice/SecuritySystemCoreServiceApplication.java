@@ -9,5 +9,4 @@ public class SecuritySystemCoreServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(SecuritySystemCoreServiceApplication.class, args);
     }
-
 }

@@ -2,17 +2,21 @@ package com.example.securitysystemcoreservice.Services;
 
 import com.example.securitysystemcoreservice.Repositories.DomicilioRepository;
 import com.example.securitysystemcoreservice.Models.Domicilio;
+import com.example.securitysystemcoreservice.Services.exceptions.DomicilioException;
+import com.example.securitysystemcoreservice.Services.exceptions.DomicilioNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
-public class DomiciliosService {
+@Service
+public class DomicilioService {
     private final DomicilioRepository domicilioRepository;
 
     @Autowired
-    public DomiciliosService(DomicilioRepository domicilioRepository) {
+    public DomicilioService(DomicilioRepository domicilioRepository) {
         this.domicilioRepository = domicilioRepository;
     }
 
@@ -57,5 +61,8 @@ public class DomiciliosService {
             throw new DomicilioException("Unknown error");
         }
     }
+    private boolean doesDomicilioExist(Long id) {
 
+        return this.domicilioRepository.findById(id).isPresent();
+    }
 }
