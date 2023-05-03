@@ -2,7 +2,6 @@ package com.example.securitysystemcoreservice.Services;
 
 import com.example.securitysystemcoreservice.Repositories.DomicilioRepository;
 import com.example.securitysystemcoreservice.Models.Domicilio;
-import com.example.securitysystemcoreservice.Services.exceptions.DomicilioException;
 import com.example.securitysystemcoreservice.Services.exceptions.DomicilioNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -24,19 +23,15 @@ public class DomicilioService {
         return this.domicilioRepository.findAll();
     }
 
-    public Domicilio addDomicilio(Domicilio domicilio) throws DomicilioException {
-        try {
-            return this.domicilioRepository.save(domicilio);
-        } catch (Exception e) {
-            throw new DomicilioException("Email taken");
-        }
+    public Domicilio addDomicilio(Domicilio domicilio) {
+        return this.domicilioRepository.save(domicilio);
     }
 
-    public void deleteDomicilios(Long id) {
+    public void deleteDomicilio(Long id) {
         this.domicilioRepository.deleteById(id);
     }
 
-    public Domicilio getDomiciliosById(Long id) throws DomicilioNotFoundException {
+    public Domicilio getDomicilioById(Long id) throws DomicilioNotFoundException {
         Optional<Domicilio> domicilio = this.domicilioRepository.findById(id);
 
         if (domicilio.isEmpty()) {
@@ -46,7 +41,7 @@ public class DomicilioService {
         return domicilio.get();
     }
 
-    public Domicilio updateDomicilio(Long id, Domicilio domicilio) throws DomicilioNotFoundException, DomicilioException {
+    public Domicilio updateDomicilio(Long id, Domicilio domicilio) throws DomicilioNotFoundException {
         boolean domicilioExists = this.doesDomicilioExist(id);
 
         if (!domicilioExists) {
@@ -55,11 +50,7 @@ public class DomicilioService {
 
         domicilio.setId(id);
 
-        try {
-            return this.domicilioRepository.save(domicilio);
-        } catch (DataIntegrityViolationException e) {
-            throw new DomicilioException("Unknown error");
-        }
+        return this.domicilioRepository.save(domicilio);
     }
     private boolean doesDomicilioExist(Long id) {
 

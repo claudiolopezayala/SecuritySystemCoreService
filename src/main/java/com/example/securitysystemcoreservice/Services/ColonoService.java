@@ -55,11 +55,7 @@ public class ColonoService {
 
         colono.setId(id);
 
-        try {
-            return this.colonoRepository.save(colono);
-        } catch (DataIntegrityViolationException e) {
-            throw new ColonoException("Unknown error");
-        }
+        return this.colonoRepository.save(colono);
     }
 
     private boolean doesColonoExist(Long id) {
