@@ -12,19 +12,19 @@ public class Colono {
     private String nombre;
     private LocalDate fechaHoraRegistro;
     @ManyToOne
-    private Colono colono;
+    private Domicilio domicilio;
 
-    public Colono(String nombre, LocalDate fechaHoraRegistro, Colono colono) {
+    public Colono(String nombre, LocalDate fechaHoraRegistro, Domicilio domicilio) {
         this.nombre = nombre;
         this.fechaHoraRegistro = fechaHoraRegistro;
-        this.colono = colono;
+        this.domicilio = domicilio;
     }
 
     public Colono(Long id, String nombre, LocalDate fechaHoraRegistro, Colono colono) {
         this.id = id;
         this.nombre = nombre;
         this.fechaHoraRegistro = fechaHoraRegistro;
-        this.colono = colono;
+        this.domicilio = domicilio;
     }
 
     public Colono(){
@@ -50,12 +50,12 @@ public class Colono {
         this.fechaHoraRegistro = fechaHoraRegistro;
     }
 
-    public Colono getColono() {
-        return colono;
+    public Domicilio getDomicilio() {
+        return domicilio;
     }
 
-    public void setColono(Colono colono) {
-        this.colono = colono;
+    public void setDomicilio(Domicilio domicilio) {
+        this.domicilio = domicilio;
     }
 
     public void setId(Long id) {
