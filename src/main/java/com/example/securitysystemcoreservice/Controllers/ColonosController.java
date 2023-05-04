@@ -1,6 +1,8 @@
 package com.example.securitysystemcoreservice.Controllers;
 
 import com.example.securitysystemcoreservice.Models.Colono;
+import com.example.securitysystemcoreservice.Services.ColonoService;
+import com.example.securitysystemcoreservice.Services.exceptions.ColonoNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

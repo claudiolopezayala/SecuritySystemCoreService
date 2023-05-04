@@ -25,11 +25,11 @@ public class ColonoService {
         return this.colonoRepository.save(colono);
     }
 
-    public void deleteColonos(Long id) {
+    public void deleteColono(Long id) {
         this.colonoRepository.deleteById(id);
     }
 
-    public Colono getColonosById(Long id) throws ColonoNotFoundException {
+    public Colono getColonoById(Long id) throws ColonoNotFoundException {
         Optional<Colono> colono = this.colonoRepository.findById(id);
 
         if (colono.isEmpty()) {
