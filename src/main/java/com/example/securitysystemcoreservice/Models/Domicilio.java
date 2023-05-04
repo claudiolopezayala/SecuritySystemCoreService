@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 
 @Entity
 @Table
-@Table
 public class Domicilio {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
