@@ -10,22 +10,22 @@ import java.util.List;
 @RestController
 @RequestMapping("/colonos")
 public class ColonosController {
-    private final ColonosService colonosService;
+    private final ColonoService colonoService;
 
     @Autowired
-    public ColonosController(ColonosService colonosService) {
-        this.colonosService = colonosService;
+    public ColonosController(ColonoService colonoService) {
+        this.colonoService = colonoService;
     }
 
     @GetMapping
     public List<Colono> getColonos() {
-        return this.colonosService.getColonos();
+        return this.colonoService.getColonos();
     }
 
     @GetMapping(path = "{id}")
     public Colono getColonoById(@PathVariable("id") Long id) {
         try {
-            return this.colonosService.getColonoById(id);
+            return this.colonoService.getColonoById(id);
         } catch (ColonoNotFoundException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
@@ -33,14 +33,14 @@ public class ColonosController {
 
     @PostMapping
     public Colono registerNewColono(@RequestBody Colono colono) {
-        return this.colonosService.addColono(colono);
+        return this.colonoService.addColono(colono);
     }
 
     @PutMapping(path = "{id}")
     public Colono updateColono(@PathVariable("id") Long id, @RequestBody Colono colono) {
         try {
-            return this.colonosService.updateColono(id, colono);
-        } catch (ColonosNotFoundException e) {
+            return this.colonoService.updateColono(id, colono);
+        } catch (ColonoNotFoundException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }
@@ -48,6 +48,6 @@ public class ColonosController {
 
     @DeleteMapping(path = "{id}")
     public void deleteColono(@PathVariable("id") Long id) {
-        this.colonosService.deleteColono(id);
+        this.colonoService.deleteColono(id);
     }
 }

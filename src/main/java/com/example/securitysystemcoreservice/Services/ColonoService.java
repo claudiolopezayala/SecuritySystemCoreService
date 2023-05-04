@@ -3,12 +3,9 @@ package com.example.securitysystemcoreservice.Services;
 import com.example.securitysystemcoreservice.Repositories.ColonoRepository;
 import com.example.securitysystemcoreservice.Models.Colono;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import java.util.List;
-//
 import com.example.securitysystemcoreservice.Services.exceptions.ColonoNotFoundException;
-import com.example.securitysystemcoreservice.Services.exceptions.ColonoException;
 import java.util.Optional;
 
 @Service
@@ -24,12 +21,8 @@ public class ColonoService {
         return this.colonoRepository.findAll();
     }
 
-    public Colono addColono(Colono colono) throws ColonoException {
-        try {
-            return this.colonoRepository.save(colono);
-        } catch (Exception e) {
-            throw new ColonoException("Email taken");
-        }
+    public Colono addColono(Colono colono) {
+        return this.colonoRepository.save(colono);
     }
 
     public void deleteColonos(Long id) {
@@ -46,7 +39,7 @@ public class ColonoService {
         return colono.get();
     }
 
-    public Colono updateColono(Long id, Colono colono) throws ColonoNotFoundException, ColonoException {
+    public Colono updateColono(Long id, Colono colono) throws ColonoNotFoundException {
         boolean colonoExists = this.doesColonoExist(id);
 
         if (!colonoExists) {
